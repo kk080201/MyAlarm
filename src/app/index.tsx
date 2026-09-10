@@ -1,5 +1,5 @@
-import { useState } from 'react';//reactという場所からuseStateをもってくる
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';//reactnativeからいろいろもってくる
+import { useState } from 'react'; //reactという場所からuseStateをもってくる
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'; //reactnativeからいろいろもってくる
 
 export default function HomeScreen() {//HomeScreenという画面を作る（このファイルをメインとして、このHomeScreenを外から使えるようにする）
   const [date, setDate] = useState('');
@@ -17,7 +17,34 @@ export default function HomeScreen() {//HomeScreenという画面を作る（こ
   return (//この画面にはこれを表示します
     <View style={styles.container}>
       <Text style={styles.title}>MyAlarm</Text>
+    
+    <Text style={styles.label}>日付</Text>
+    <TextInput style={styles.input}placeholder="2026/09/20"
+    value={date}
+    onChangeText={setDate}/>
 
+    <Text style={styles.label}>時刻</Text>
+    <TextInput style ={styles.input}placeholder="07:30"
+    value={time}
+    onChangeText={setTime}/>
 
-  )
+    <Text style={styles.label}>音</Text>
+    <Text style={styles.sound}>placeholder=鳥の音</Text>
+
+    <TouchableOpacity style={styles.button}
+    onPress={registerAlarm}>
+      <Text style={styles.buttonText}>アラームを登録</Text>
+    </TouchableOpacity>
+
+    {alarm !==''&&(
+      <View style={styles.result}>
+        <Text style={styles.resultText}>{alarm}</Text>
+      </View>
+    )}
+  </View>  
+  );
 }
+
+const styles=StyleSheet.create({
+  
+})
